@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #output {
+            width: 50vh;
+            height: 5vh;
+            text-align: right;
+            font-size: 20px;
+        }
+
+        .container {
+            width: 50vh;
+            height: 50vh;
+
+        }
+
+        .button {
+            margin-top: 5px;
+            margin-bottom: -1px;
+            display: flex;
+
+            font-size: 55px;
+            line-height: 80px;
+        }
+
+        .num {
+            border: 0.5px solid black;
+            height: 100px;
+            width: 75px;
+            border-radius: 2px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="inputbox">
+            <input type="text" id="output" value="0">
+        </div>
+        <div class="button">
+            <div class="box1">
+                <div class="num">1</div>
+                <div class="num">2</div>
+                <div class="num">3</div>
+                <div class="num">4</div>
+            </div>
+            <div class="box2">
+                <div class="num">5</div>
+                <div class="num">6</div>
+                <div class="num">7</div>
+                <div class="num">8</div>
+            </div>
+            <div class="box3">
+                <div class="num">9</div>
+                <div class="num">0</div>
+                <div class="num">.</div>
+                <div class="num">/</div>
+            </div>
+            <div class="box4">
+                <div class="num">%</div>
+                <div class="num">+</div>
+                <div class="num">-</div>
+                <div class="num">*</div>
+            </div>
+            <div class="box5">
+                <div class="num">Sqrt</div>
+                <div class="num">AC</div>
+                <div class="num">del</div>
+                <div class="num">=</div>
+            </div>
+
+        </div>
+    </div>
+    <script>
+        let buttons = document.querySelectorAll(".num");
+        let output = document.getElementById("output");
+        let string = ""
+        let arr = Array.from(buttons)
+        console.log(arr)
+        arr.forEach(button => {
+            button.addEventListener("click", (e) => {
+                if (e.target.innerHTML == "AC") {
+                    string = ""
+                    output.value = "0"
+                } else if (e.target.innerHTML == "del") {
+                    string = string.slice(0, -1)
+                    output.value = string
+                } else if (e.target.innerHTML == "=") {
+                    string = eval(string)
+                    output.value = string
+                } else if (e.target.innerHTML == "Sqrt") {
+                    string = Math.sqrt(eval(string));
+                    output.value = string
+                } else {
+                    if (string == "" && (e.target.innerHTML == "+" || e.target.innerHTML == "-" || e.target.innerHTML == "*" || e.target.innerHTML == "/" || e.target.innerHTML == "%")) {
+                        return;
+                    }
+                    string += e.target.innerHTML
+                    output.value = string
+                }
+
+            })
+
+        })
+    </script>
+</body>
+
+</html>

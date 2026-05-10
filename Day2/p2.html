@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <h2 id="count">0</h2>
+        <div>
+            <button id="increment">increment</button>
+            <button id="decrement">decrement</button>
+            <button id="reset">reset</button>
+        </div>
+    </div>
+    <script>
+        let count = 0
+        let counterDisplay = document.getElementById("count")
+        let incrementBtn = document.getElementById("increment")
+        let decrementBtn = document.getElementById("decrement")
+        function updateDisplay() {
+            counterDisplay.textContent = count
+            if (count < 0) {
+                counterDisplay.style.color = "red"
+            } else {
+                counterDisplay.style.color = "blue"
+            }
+        }
+        incrementBtn.addEventListener("click",()=>{
+            count++;
+            updateDisplay()
+        })
+            
+        
+        decrementBtn.addEventListener("click",()=>{
+            count--;
+            updateDisplay()
+        })
+        reset.addEventListener("click",() => {
+            count = 0;
+            updateDisplay()
+        })
+        updateDisplay()
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <h2 class="count">0</h2>
+        <div>
+            <button class="increment">increment</button>
+            <button class="decrement">decrement</button>
+            <button class="reset">reset</button>
+        </div>
+    </div>
+    <script>
+        let count = 0;
+        const counterDisplay = document.querySelector(".count");
+        const incrementbtn = document.querySelector(".increment");
+        const decrementbtn = document.querySelector(".decrement");
+        const resetbtn = document.querySelector(".reset");
+
+        function updateDisplay() {
+            counterDisplay.textContent = count;
+            if (count < 0) {
+                counterDisplay.style.color = "red"
+            } else {
+                counterDisplay.style.color = "blue"
+            }
+        }
+        incrementbtn.addEventListener("click", () => {
+            count++;
+            updateDisplay()
+        });
+        decrementbtn.addEventListener("click", () => {
+            count--;
+            updateDisplay()
+        });
+        resetbtn.addEventListener("click", () => {
+            count = 0;
+            updateDisplay()
+        });
+        updateDisplay();
+    </script>
+</body>
+
+</html>

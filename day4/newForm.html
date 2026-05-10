@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Form</title>
+</head>
+
+<body>
+
+    <form id="userData">
+
+        <label>Name</label><br>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label>Email</label><br>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label>Password</label><br>
+        <input type="password" id="password" name="password" required>
+        <label>Show Password</label>
+        <input type="checkbox" id="showpassword"><br><br>
+
+        <label>Age</label><br>
+        <input type="number" id="age" name="age" required><br><br>
+
+        <label>Gender</label><br>
+        <input type="radio" name="gender" value="Male"> Male
+        <input type="radio" name="gender" value="Female"> Female
+        <input type="radio" name="gender" value="Other"> Other
+        <br><br>
+
+        <label>Country</label><br>
+        <select id="country" name="country">
+            <option value="">Select your country</option>
+            <option value="India">India</option>
+            <option value="USA">USA</option>
+            <option value="UK">UK</option>
+        </select>
+        <br><br>
+
+        <button type="submit">Submit</button>
+
+    </form>
+
+    <script>
+
+        let form = document.getElementById("userData");
+        let passwordInput = document.getElementById("password");
+        let showPassword = document.getElementById("showpassword");
+
+        showPassword.addEventListener("change", function () {
+
+            if (this.checked) {
+                passwordInput.type = "text";
+            } else {
+                passwordInput.type = "password";
+            }
+
+        });
+
+        form.addEventListener("submit", function (e) {
+
+            e.preventDefault();
+
+            let formData = new FormData(this);
+
+            let name = formData.get("name");
+            let email = formData.get("email");
+            let password = formData.get("password");
+            let age = formData.get("age");
+            let gender = formData.get("gender");
+            let country = formData.get("country");
+
+            console.log(name, email, password, age, gender, country);
+
+        });
+
+    </script>
+
+</body>
+
+</html>
